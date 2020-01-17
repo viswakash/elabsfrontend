@@ -2,13 +2,14 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
+
 .course-box {
   background-position: left;
   background-size: cover;
   background-size: 120%;
   width: 100%;
   height: 100%;
-  transition: 0.6s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: 0.6s ease-in;
   overflow: hidden;
   position: relative;
   padding: 6px;
@@ -33,12 +34,15 @@ body {
   z-index: 3;
   color: white;
 }
+
 .course-box h4 a {
   color: white;
   text-decoration: none;
   width: 100%;
   height: 100%;
+  transition: 0.4s ease-in;
 }
+
 .course-box:hover {
   letter-spacing: 4px;
   font-size: 6px !important;
@@ -92,6 +96,7 @@ body {
 .course-box:nth-child(8) {
   background-image: url(../images/es.jpg);
 }
+
 .wrapper {
   /* width: 100vw; */
   height: 100vh;
@@ -122,7 +127,7 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  .content > .txt {
+  .content>.txt {
     height: auto;
     text-align: justify;
     overflow: hidden;
@@ -136,6 +141,7 @@ body {
     width: 70%;
     padding: 2.4rem;
   }
+
   .one {
     font-size: 4rem;
     font-weight: 800;
