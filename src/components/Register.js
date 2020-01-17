@@ -308,10 +308,10 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                                 onChange={this.onChangeCvlink}
                                 />
                     </div> */}
-                    <div className="form-group md-form">
-                        {/* <label>Reason Of Join: </label> */}
+                    {/* <div className="form-group md-form">
+                        {/* <label>Reason Of Join: </label> 
                             <textarea cols="40" rows="5" placeholder=" Why Do You Want To Join?" className="form-control md-textarea" value={this.state.reason_of_join} onChange={this.onChangeReason}></textarea>
-                    </div>
+                    </div> */}
                     <br/>
                     <div class="form-group">
                                     <button class="btn btn-default text-white btn-lg" style={{fontFamily: 'Acme'}}>Send <i class="fa fa-paper-plane-o ml-1"></i></button>
