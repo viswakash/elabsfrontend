@@ -29,7 +29,7 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
     }
 
     componentWillMount() {
-        // this.getCountofSeats()
+        this.getCountofSeats()
       }
 
     // async getCountofSeats(){
@@ -40,7 +40,7 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
 
     async getcounts() {
         try {
-            return await axios.get('#')
+            return await axios.get('https://elabs-api.herokuapp.com/api/course')
         } catch (error) {
             console.error(error)
         }
@@ -52,14 +52,13 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
         
         if (counts.data.course === "Web Development") {
           
-            const web_seats = counts.data.seats
+            let web_seats = counts.data[2].course_seat
+            console.log(web_seats)
         }
         if (counts.data.course === "Android Development") {
-            const android_seats = counts.data.seats
+            let android_seats = counts.data.seats
         }
-        if (counts.data.course === "Machine Learning") {
-            const ml_seats = counts.data.seats
-        }
+       
         if (counts.data.course === "IOT") {
             const iot_seats = counts.data.seats
         }
@@ -172,7 +171,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
             if (response.data.success){               
                 // this.AlertSuccess("Your Form Has Been Successfully Submitted");
                 alert("Your Form Has Been Successfully Submitted"); 
-                this.resetForm()
             }else {
                 // this.AlertWarning("There was some issue in sending your form. Try Again later.")
                 alert("There was some issue in sending your form. Try Again later."); 
@@ -262,7 +260,7 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                                 <option disabled="" selected="">The Course You Are Interested</option>
                                     <option value='Web Development'>Web Development </option>
                                     <option value='Android Development'>Android Development</option>
-                                    <option value='Machine Learning'>Machine Learning</option>
+                                    
                                     <option value='AR VR'>AR/VR</option>
                                     <option value='Java'>Java</option> 
                                     <option value='Networking'>Networking</option>
@@ -278,7 +276,7 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                     switch (this.state.course) {
                         case "Web Development":   return this.getCountofSeats.counts.web_seats;
                         case "Android Development":   return this.getCountofSeats.android_seats;
-                        case "Machine Learning":   return this.getCountofSeats.ml_seats;
+                        
                         case "AR/VR":   return this.getCountofSeats.arvr_seats;
                         case "Java":   return this.getCountofSeats.java_seats;
                         case "Networking":   return this.getCountofSeats.net_seats;
