@@ -80,26 +80,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
 
     }
 
-    AlertSuccess(e) {
-        return (
-          <MDBContainer>
-            <MDBAlert color="success" dismiss>
-              <strong>{e.target.value}</strong>
-            </MDBAlert>
-          </MDBContainer>
-        );
-      };
-
-    AlertWarning(e) {
-        return (
-            <MDBContainer>
-                <MDBAlert color="warning" dismiss>
-                    <strong>{e.target.value}</strong>
-                </MDBAlert>
-            </MDBContainer>
-        );
-    };
-
     onChangeCourse(e) {
         this.setState({
              course: e.target.value
@@ -169,10 +149,8 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
             data:  Params
             }).then((response)=>{
             if (response.data.success){               
-                // this.AlertSuccess("Your Form Has Been Successfully Submitted");
                 alert("Your Form Has Been Successfully Submitted"); 
             }else {
-                // this.AlertWarning("There was some issue in sending your form. Try Again later.")
                 alert("There was some issue in sending your form. Try Again later."); 
             }
             })
@@ -197,7 +175,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                 <br/>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group md-form"> 
-                        {/* <label>Full Name: </label> */}
                         <input  type="text"
                                 className="form-control"
                                 placeholder="Enter Your Name"
@@ -206,7 +183,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                                 required/>
                     </div>
                     <div className="form-group md-form">
-                        {/* <label>Roll Number: </label> */}
                         <input 
                                 type="text" maxlength="7"  pattern="[0-9]{7}" 
                                 placeholder="College Roll Number"
@@ -216,7 +192,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                                 required/>
                     </div>
                     <div className="form-group md-form">
-                        {/* <label>Email: </label> */}
                         <input 
                                 type="email" 
                                 placeholder="E-Mail Address"
@@ -226,7 +201,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                                 required/>
                     </div>
                     <div className="form-group md-form">
-                        {/* <label>Contact: </label> */}
                         <input 
                                 type="text" maxlength="10"  pattern="[0-9]{10}"  
                                 className="form-control"
@@ -235,19 +209,23 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                                 onChange={this.onChangeContact}
                                 required/>
                     </div>
-                    <div className="form-group md-form">
-                        {/* <label>Branch: </label> */}
-                        <input 
-                                type="text" 
-                                placeholder="Branch"
-                                className="form-control"
-                                value={this.state.branch}
-                                onChange={this.onChangeBranch}
-                                required/>
+                    <div className="form-group">                      
+                            <select required className="form-control" value={this.state.branch}  onChange={this.onChangeBranch}>
+                                <option disabled="" selected="">Branch</option>
+                                    <option value='ETC'>ETC</option>
+                                    <option value='EEE'>EEE</option>
+                                    <option value='EE'>EE</option>
+                                    <option value='ECS'>ECS</option>
+                                    <option value='EI'>EI</option>
+                                    <option value='MECHANICAL'>MECHANICAL </option>
+                                    <option value='CS'>CS </option>
+                                    <option value='IT'>IT </option>
+                                    <option value='CSSE'>CSSE </option>
+                                    <option value='CSCE'>CSCE  </option>
+                            </select>
                     </div>
                     <div className="form-group">
-                        {/* <label>Year: </label> */}
-                                <select className="form-control" value={this.state.year}  onChange={this.onChangeYear}  placeholder="Year of College">
+                                <select required className="form-control" value={this.state.year}  onChange={this.onChangeYear}  placeholder="Year of College">
                                 <option disabled="" selected="">Year of College</option>
                                     <option value='1st yr'>1st Year</option>
                                     <option value='2nd yr'>2nd Year</option>
@@ -255,12 +233,10 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                     </div>
                     
                     <div className="form-group">
-                        {/* <label>Course: </label> */}
-                                <select className="form-control selectpicker" value={this.state.course}  onChange={this.onChangeCourse}  placeholder="The Course You Are Interested">
+                                <select required className="form-control selectpicker" value={this.state.course}  onChange={this.onChangeCourse}  placeholder="The Course You Are Interested">
                                 <option disabled="" selected="">The Course You Are Interested</option>
                                     <option value='Web Development'>Web Development </option>
-                                    <option value='Android Development'>Android Development</option>
-                                    
+                                    <option value='Android Development'>Android Development</option>                                   
                                     <option value='AR VR'>AR/VR</option>
                                     <option value='Java'>Java</option> 
                                     <option value='Networking'>Networking</option>
@@ -292,10 +268,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                     <div class="form-group">
                                     <button class="btn btn-default text-white btn-lg" style={{fontFamily: 'Acme'}}>Send <i class="fa fa-paper-plane-o ml-1"></i></button>
                                 </div>
-                    {/* <div className="form-group">
-                        <input type="submit" value="Submit" className="btn btn-primary" />
-                        
-                    </div> */}
                 </form>
             </div>
 
