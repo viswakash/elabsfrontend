@@ -21,8 +21,9 @@ class App extends Component {
               <Home/>
               <Courses/>
           </Route>
-          <Route path='/register' component={Register} />
-          {/* <Route path='/Contact' component={ContactUs} /> */}
+          <Route path='/register'>            
+              <Register/>
+          </Route>
         </Switch>
         <Footer/>
       </div>

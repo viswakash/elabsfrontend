@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { MDBContainer, MDBAlert } from 'mdbreact';
 
   export default class JoinUs extends Component {
 
@@ -119,7 +118,6 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
 
     onSubmit(e) {
         e.preventDefault();
-        //  console.log(this.state);
         console.log(`Form submitted:`);
         console.log(`Name: ${this.state.name}`);
         console.log(`Roll Number: ${this.state.roll}`);
@@ -150,8 +148,10 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
             }).then((response)=>{
             if (response.data.success){               
                 alert("Your Form Has Been Successfully Submitted"); 
+                // this.props.onSubmit(response.data.success) 
             }else {
-                alert("There was some issue in sending your form. Try Again later."); 
+                alert("There was some issue in sending your form. Try Again later.");
+                // this.props.onSubmit(response.data.message) 
             }
             })
 
@@ -194,7 +194,7 @@ import { MDBContainer, MDBAlert } from 'mdbreact';
                     <div className="form-group md-form">
                         <input 
                                 type="email" 
-                                placeholder="E-Mail Address"
+                                placeholder="E-Mail Address (Use KIIT Mail)"
                                 className="form-control"
                                 value={this.state.email}
                                 onChange={this.onChangeEmail}
