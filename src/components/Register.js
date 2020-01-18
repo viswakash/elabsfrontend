@@ -152,8 +152,8 @@ import axios from 'axios';
             data:  Params
             }).then((response)=>{
             if (response.data.success){               
-                alert("Your Form Has Been Successfully Submitted"); 
-                // this.props.onSubmit(response.data.success) 
+                // alert("Your Form Has Been Successfully Submitted"); 
+                this.props.onSubmit(response.data.success) 
                 this.setState({
                     name: '',
                     roll: '',
@@ -164,8 +164,8 @@ import axios from 'axios';
                     contact:'',
                 })
             }else {
-                alert(response.data.message);
-                // this.props.onSubmit(response.data.message) 
+                //alert(response.data.message);
+                this.props.onSubmit(response.data.message) 
             }
             })
 
@@ -190,7 +190,7 @@ import axios from 'axios';
                     </div>
                     <div className="form-group md-form">
                         <input 
-                                type="text" maxlength="7"  pattern="[0-9]{7}" 
+                                type="text" maxLength="7"  pattern="[0-9]{7}" 
                                 placeholder="College Roll Number"
                                 className="form-control"
                                 value={this.state.roll}
@@ -208,7 +208,7 @@ import axios from 'axios';
                     </div>
                     <div className="form-group md-form">
                         <input 
-                                type="text" maxlength="10"  pattern="[0-9]{10}"  
+                                type="text" maxLength="10"  pattern="[0-9]{10}"  
                                 className="form-control"
                                 placeholder="Whatsapp No."
                                 value={this.state.contact}
