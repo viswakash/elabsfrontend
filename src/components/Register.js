@@ -24,11 +24,12 @@ import axios from 'axios';
             year:'',
             course:'',
             contact:'',
+            courses : []
         }
     }
 
-    componentWillMount() {
-        this.getCountofSeats()
+    componentDidMount() {
+        this.getCounts()
       }
 
     // async getCountofSeats(){
@@ -37,9 +38,14 @@ import axios from 'axios';
     //     console.log(count.data)
     // }
 
-    async getcounts() {
+    async getCounts() {
         try {
-            return await axios.get('https://elabs-api.herokuapp.com/api/course')
+            // return await axios.get('https://elabs-api.herokuapp.com/api/course')
+            const response = await axios.get('https://elabs-api.herokuapp.com/api/course');
+            for(var i=0;i<response.data.data.length;i++)
+            {
+                this.state.courses.push(response.data.data[i])
+            }
         } catch (error) {
             console.error(error)
         }
@@ -47,35 +53,35 @@ import axios from 'axios';
       
     
     async getCountofSeats() {
-        const counts = await this.getcounts()
+        // const counts = await this.getcounts()
         
-        if (counts.data.course === "Web Development") {
+        // if (counts.data.course === "Web Development") {
           
-            let web_seats = counts.data[2].course_seat
-            console.log(web_seats)
-        }
-        if (counts.data.course === "Android Development") {
-            let android_seats = counts.data.seats
-        }
+        //     let web_seats = counts.data[2].course_seat
+        //     console.log(web_seats)
+        // }
+        // if (counts.data.course === "Android Development") {
+        //     let android_seats = counts.data.seats
+        // }
        
-        if (counts.data.course === "IOT") {
-            const iot_seats = counts.data.seats
-        }
-        if (counts.data.course === "Embedded Systems") {
-            const emb_seats = counts.data.seats
-        }
+        // if (counts.data.course === "IOT") {
+        //     const iot_seats = counts.data.seats
+        // }
+        // if (counts.data.course === "Embedded Systems") {
+        //     const emb_seats = counts.data.seats
+        // }
 
-        if (counts.data.course === "AR/VR") {
-            const arvr_seats = counts.data.seats
-        }
+        // if (counts.data.course === "AR/VR") {
+        //     const arvr_seats = counts.data.seats
+        // }
 
-        if (counts.data.course === "Networking") {
-            const net_seats = counts.data.seats
-        }
+        // if (counts.data.course === "Networking") {
+        //     const net_seats = counts.data.seats
+        // }
 
-        if (counts.data.course === "Java") {
-            const java_seats = counts.data.seats
-        }
+        // if (counts.data.course === "Java") {
+        //     const java_seats = counts.data.seats
+        // }
 
     }
 
@@ -116,16 +122,17 @@ import axios from 'axios';
         });
     }
 
+    onFinish(e) {
+        for(var i=0;i< this.state.courses.length;i++)
+        {
+            if(this.state.courses[i].course_name===e)
+            {
+                return this.state.courses[i].course_name > 0 ? true : false;
+            }
+        }
+    }
     onSubmit(e) {
         e.preventDefault();
-        console.log(`Form submitted:`);
-        console.log(`Name: ${this.state.name}`);
-        console.log(`Roll Number: ${this.state.roll}`);
-        console.log(`Email: ${this.state.email}`);
-        console.log(`Branch: ${this.state.branch}`);
-        console.log(`Year: ${this.state.year}`);
-        console.log(`Course: ${this.state.course}`);
-        console.log(`Contact: ${this.state.contact}`);
      
         const Params = {
 
@@ -139,8 +146,6 @@ import axios from 'axios';
             
         };
 
-        console.log(Params);
-
         axios({
             method: "POST", 
             url:"https://elabs-api.herokuapp.com/api/register", 
@@ -149,21 +154,22 @@ import axios from 'axios';
             if (response.data.success){               
                 alert("Your Form Has Been Successfully Submitted"); 
                 // this.props.onSubmit(response.data.success) 
+                this.setState({
+                    name: '',
+                    roll: '',
+                    email:'',        
+                    branch: '',
+                    year:'',
+                    course:'',
+                    contact:'',
+                })
             }else {
-                alert("There was some issue in sending your form. Try Again later.");
+                alert(response.data.message);
                 // this.props.onSubmit(response.data.message) 
             }
             })
 
-        this.setState({
-            name: '',
-            roll: '',
-            email:'',        
-            branch: '',
-            year:'',
-            course:'',
-            contact:'',
-        })
+        
     }
 
     render() {
@@ -234,35 +240,90 @@ import axios from 'axios';
                     
                     <div className="form-group">
                                 <select required className="form-control selectpicker" value={this.state.course}  onChange={this.onChangeCourse}  placeholder="The Course You Are Interested">
-                                <option disabled="" selected="">The Course You Are Interested</option>
-                                    <option value='Web Development'>Web Development </option>
-                                    <option value='Android Development'>Android Development</option>                                   
-                                    <option value='AR VR'>AR/VR</option>
-                                    <option value='Java'>Java</option> 
-                                    <option value='Networking'>Networking</option>
+                                <option disabled={this.state.course !== ''} selected>The Course You Are Interested</option>
+                                    <option value='Java' disabled={this.onFinish("Java")}>Java</option> 
+                                    <option value='AR/VR'>AR/VR</option>
                                     <option value='IOT'>IOT</option>
+                                    <option value='Networking'>Networking</option>
+                                    <option value='Android Development' >Android Development</option>                                   
+                                    <option value='Web Development'>Web Development </option>
                                     <option value='Embedded Systems'>Embedded Systems</option>
                                 </select>
                     </div>
                    
                     
-                        {/* <label style={{fontFamily:"acme"}}><strong>Seats Left:  </strong>
+                        <label style={{fontFamily:"acme"}}><strong>Seats Left:  </strong>
                        
                     {(() => {
                     switch (this.state.course) {
-                        case "Web Development":   return this.getCountofSeats.counts.web_seats;
-                        case "Android Development":   return this.getCountofSeats.android_seats;
-                        
-                        case "AR/VR":   return this.getCountofSeats.arvr_seats;
-                        case "Java":   return this.getCountofSeats.java_seats;
-                        case "Networking":   return this.getCountofSeats.net_seats;
-                        case "IOT":   return this.getCountofSeats.iot_seats;
-                        case "Embedded Systems":   return this.getCountofSeats;
-                        default: return 0;
+                        case "Java":   
+                            for(var i=0;i<this.state.courses.length;i++)
+                            {
+                                if(this.state.courses[i].course_name === "Java")
+                                {
+                                    return this.state.courses[i].course_seat
+                                }
+                            }
+                            break;
+                        case "AR/VR":   
+                            for(i=0;i<this.state.courses.length;i++)
+                            {
+                                if(this.state.courses[i].course_name === "AR/VR")
+                                {
+                                    return this.state.courses[i].course_seat
+                                }
+                            }
+                            break;
+                        case "IOT":   
+                            for(i=0;i<this.state.courses.length;i++)
+                            {
+                                if(this.state.courses[i].course_name === "IOT")
+                                {
+                                    return this.state.courses[i].course_seat
+                                }
+                            }
+                            break;
+                        case "Networking":   
+                            for(i=0;i<this.state.courses.length;i++)
+                            {
+                                if(this.state.courses[i].course_name === "Networking")
+                                {
+                                    return this.state.courses[i].course_seat
+                                }
+                            }
+                            break;
+                        case "Android Development":   
+                            for(i=0;i<this.state.courses.length;i++)
+                            {
+                                if(this.state.courses[i].course_name === "Android Development")
+                                {
+                                    return this.state.courses[i].course_seat
+                                }
+                            }
+                            break;
+                        case "Web Development":   
+                            for(i=0;i<this.state.courses.length;i++)
+                            {
+                                if(this.state.courses[i].course_name === "Web Development")
+                                {
+                                    return this.state.courses[i].course_seat
+                                }
+                            }
+                            break;
+                        case "Embedded Systems":  
+                            for(i=0;i<this.state.courses.length;i++)
+                            {
+                                if(this.state.courses[i].course_name === "Embedded Systems")
+                                {
+                                    return this.state.courses[i].course_seat
+                                }
+                            }
+                            break;
+                        default: return "Course not selected";
                     }
                     })()}
                         
-                        </label> */}
+                        </label>
 
                       <br/>
                     <div class="form-group">
