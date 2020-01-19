@@ -217,7 +217,7 @@ import axios from 'axios';
                     </div>
                     <div className="form-group">                      
                             <select required className="form-control" value={this.state.branch}  onChange={this.onChangeBranch}>
-                                <option disabled="" selected="">Branch</option>
+                                <option disabled={this.state.branch !== ''} selected="">Branch</option>
                                     <option value='ETC'>ETC</option>
                                     <option value='EEE'>EEE</option>
                                     <option value='EE'>EE</option>
@@ -232,7 +232,7 @@ import axios from 'axios';
                     </div>
                     <div className="form-group">
                                 <select required className="form-control" value={this.state.year}  onChange={this.onChangeYear}  placeholder="Year of College">
-                                <option disabled="" selected="">Year of College</option>
+                                <option disabled={this.state.year !== ''} selected="">Year of College</option>
                                     <option value='1st yr'>1st Year</option>
                                     <option value='2nd yr'>2nd Year</option>
                                 </select>
