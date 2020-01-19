@@ -97,8 +97,7 @@ body {
   background-image: url(../images/es.jpg);
 }
 
-.wrapper {
-  /* width: 100vw; */
+/* .wrapper {
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -151,4 +150,4 @@ body {
     font-size: 4rem;
     font-weight: 800;
   }
-}
+} */
