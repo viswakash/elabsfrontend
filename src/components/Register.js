@@ -151,8 +151,8 @@ export default class JoinUs extends Component {
                      data: Params
                    }).then(response => {
                      if (response.data.success) {
-                       // alert("Your Form Has Been Successfully Submitted");
-                       this.props.onSubmit(response.data.success);
+                       alert("Your Form Has Been Successfully Submitted");
+                    //    this.props.onSubmit(response.data.success);
                        this.setState({
                          name: '',
                          roll: '',
@@ -164,8 +164,8 @@ export default class JoinUs extends Component {
                          gender: ''
                        });
                      } else {
-                       //alert(response.data.message);
-                       this.props.onSubmit(response.data.message);
+                       alert(response.data.message);
+                    //    this.props.onSubmit(response.data.message);
                      }
                    });
                  }

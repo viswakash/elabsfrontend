@@ -45,7 +45,7 @@ class App extends Component {
               <Home />
               <Courses />
             </Route>
-            <Route path='/register'>
+            <Route exact path='/register'>
               <br />
               {showAlert}
               <Register onSubmit={fields => this.onSubmit(fields)} />
