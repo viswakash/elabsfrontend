@@ -18,7 +18,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      success: 'Registration is now Live'
+      success: 'Registration will start soon'
     };
 
     this.onSubmit = fields => {
