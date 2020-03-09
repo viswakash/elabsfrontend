@@ -8,6 +8,7 @@ import Navbar from './layouts/Navbar';
 import Footer from './layouts/Footer';
 import Register from './components/Register';
 import Home from './components/Home';
+import AboutUs from './components/AboutUs';
 import Courses from './components/modals';
 import Alert_Success from './components/Alert_Success';
 import Alert_Fail from './components/Alert_Fail';
@@ -43,6 +44,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/'>
               <Home />
+              <AboutUs />
               <Courses />
             </Route>
             <Route exact path='/register'>

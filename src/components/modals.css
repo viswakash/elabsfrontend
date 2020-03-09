@@ -1,8 +1,9 @@
-body {
+ /* body {
   box-sizing: border-box;
   margin: 0;
-}
+} */
 
+/*
 .course-box {
   background-position: left;
   background-size: cover;
@@ -95,7 +96,7 @@ body {
 
 .course-box:nth-child(8) {
   background-image: url(../images/es.jpg);
-}
+} */
 
 /* .wrapper {
   height: 100vh;
@@ -151,3 +152,76 @@ body {
     font-weight: 800;
   }
 } */
+
+.course-title{
+	color: #FFAB3D;
+	font-size: 50px;
+	font-weight: 100;
+  margin-top: 50px;
+}
+
+.container {
+  color: #3E2723;
+  font-family: "Poppins", sans-serif;
+  /* pad: 20px; */
+}
+.container .card {
+  margin-top: 30px;
+  display: flex;
+  height: 400px;
+  width: auto;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 40px 0 40px 40px;
+  transition: 1s ease-out;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 0px 0px #9E9E9E;
+}
+.container .card img {
+  position: relative;
+  margin-top: 30px;
+  height: 100px;
+  width: 100px;
+  border-radius: 0 40px 40px 40px;
+}
+.container .card .card-body .card-title {
+  font-size: 30px;
+}
+.container .card .card-body .card-text {
+  padding-top: 10px;
+}
+.container .card .card-body a {
+  position: absolute;
+  bottom: 15px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #ffab3d;
+  border-radius: 30px;
+  color: #fff;
+  background-color: #ffab3d;
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  transition: 0.5s ease-in;
+}
+.container .card .card-body a:hover {
+  width: 85%;
+  transition: 0.5s ease-out;
+}
+.container .card:hover {
+  background-color: #ffab3d;
+  cursor: pointer;
+  box-shadow: 7px 7px 2px #9E9E9E;
+  color: #fff;
+  transition: 0.5s ease-in;
+  transform: translateY(-10px);
+}
+.container .card:hover .card-body a {
+  background-color: #fff;
+  color: #ffab3d;
+}

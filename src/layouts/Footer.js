@@ -1,10 +1,11 @@
 import React from 'react';
 import Logo from '../assets/Elabs logo black.png';
 import Footer_img from '../assets/footer-background-png-6.png';
+import './footer.css';
 
 const Footer = () => {
   return (
-    <div style={{ backgroundImage: `url(${Footer_img})` }}>
+    <div className="footer" style={{ backgroundImage: `url(${Footer_img})` }}>
       {/* Footer */}
       <footer className='page-footer font-small mdb-color pt-4 bg-dark sticky-bottom'>
         {/* Footer Links */}

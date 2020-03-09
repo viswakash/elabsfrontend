@@ -48,6 +48,7 @@ const Navbar = () => {
                 REGISTER
               </Link>
             </li>
+            
           </ul>
         </div>
       </div>

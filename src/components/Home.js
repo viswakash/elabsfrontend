@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import './home.css';
 import { gsap } from 'gsap';
 import Logo from '../assets/Elabs logo black.png';
+import HomeImage from '../assets/Home.png';
 import { Link } from 'react-router-dom';
+
 function Home() {
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -27,9 +29,10 @@ function Home() {
           </div>
         </div>
         <div className='two'>
-          <div className='overflow'>
+          {/* <div className='overflow'>
             <img src={Logo}></img>
-          </div>
+          </div> */}
+          <img src={HomeImage}></img>
         </div>
       </div>
     </div>

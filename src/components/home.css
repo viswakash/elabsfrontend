@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,400,900&display=swap');
 
 .navbar {
-    position: absolute;
+    position: relative;
     z-index: 2;
     width: 100%;
+    background-color: transparent;
 }
 
 .wrapper {
     height: 100vh;
     display: flex;
     flex-direction: row;
+    padding-top: 0px;
+    /* margin-top: 80px; */
 }
 
 .wrapper .one {
@@ -80,14 +83,18 @@
     transform: translateX(-50%);
 }
 
-.wrapper .two .overflow img {
+/* .wrapper .two .overflow img {
     width: 60%;
-    height: auto;
+    height: 100vh;
+} */
+
+.wrapper .two img {
+    height: 100vh;
+    /* width: 0%; */
 }
 
 @media only screen and (max-width: 850px) {
     .wrapper .one .heading {
-
         margin-left: 4rem;
     }
 
@@ -103,6 +110,10 @@
         width: 60%;
         height: auto;
     }
+    /* .wrapper .two img {
+        height: 100vh;
+        width: auto;
+    } */
 }
 
 @media only screen and (max-width: 767px) {
@@ -177,5 +188,9 @@
         z-index: 10;
         left: 50%;
         transform: translateX(-50%);
+    }
+    .wrapper .two img {
+        height: auto;
+        width: 100vw;
     }
 }
