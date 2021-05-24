@@ -20,7 +20,7 @@ function Home() {
         <div className='one'>
           <div className='heading'>
             <h6 className='h6'>Become a part of</h6>
-            <h1 className='h1'>E LABS</h1>
+            <h1 className='h1'>E-LABS</h1>
             <button>
               <Link to='/register'>REGISTER</Link>
             </button>
