@@ -22,7 +22,7 @@ function Home() {
             <h6 className='h6'>Become a part of</h6>
             <h1 className='h1'>E-LABS</h1>
             <button>
-              <Link to='/register'>Book</Link>
+              <Link to='/register'>Register</Link>
             </button>
           </div>
         </div>
