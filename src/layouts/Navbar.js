@@ -45,7 +45,7 @@ const Navbar = () => {
                 className='nav-link  text-dark'
                 style={{ fontFamily: 'sans-serif' }}
               >
-                REGISTER
+                <b>Book</b>
               </Link>
             </li>
           </ul>
