@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './register.css'
 // import {RadioGroup, RadioButton} from 'react-radio-buttons;'
+import { FaRegUser, FaGenderless, FaMercury, FaAt, FaWhatsapp, FaCodeBranch, FaBook, FaBookOpen  } from "react-icons/fa";
+import { TiSortNumerically } from "react-icons/ti";
+import { ImBooks } from "react-icons/im";
 
 export default class JoinUs extends Component {
                  constructor(props) {
@@ -14,6 +18,9 @@ export default class JoinUs extends Component {
                    this.onChangeCourse = this.onChangeCourse.bind(this);
                    this.onChangeContact = this.onChangeContact.bind(this);
                    this.onChangeGender = this.onChangeGender.bind(this);
+                   this.focusMe=this.focusMe.bind(this)
+                   this.defocusMe=this.defocusMe.bind(this)
+                   this.inpRef=React.createRef()
 
                    this.onSubmit = this.onSubmit.bind(this);
 
@@ -131,6 +138,12 @@ export default class JoinUs extends Component {
                      }
                    }
                  }
+                 focusMe(cont){
+                   document.querySelector(`.${cont}`).style.borderColor='#0787e8'
+                }
+                 defocusMe(obj){
+                  document.querySelector(`.${obj}`).style.borderColor='#535353'
+                }
                  onSubmit(e) {
                    e.preventDefault();
 
@@ -144,7 +157,7 @@ export default class JoinUs extends Component {
                      course: this.state.course,
                      gender: this.state.gender
                    };
-
+                   
                    axios({
                      method: 'POST',
                      url: 'https://elabs-api.herokuapp.com/api/register',
@@ -169,33 +182,40 @@ export default class JoinUs extends Component {
                      }
                    });
                  }
+               
 
                  render() {
                    return (
                      <center>
-                       <div className='col-md-6'>
+                       <div className='col-md-4'>
                          <div style={{ marginTop: 50 }}>
                            <h2>
                              Registration Form
                            </h2>
                            <br />
-                           <form onSubmit={this.onSubmit}>
-                             <div className='form-group md-form'>
+                           <form onSubmit={this.onSubmit} className='form'>
+                             <div className='input-field name'>
+                               <span><FaRegUser/></span>
                                <input
                                  type='text'
-                                 className='form-control'
+                                 className='input'
                                  placeholder='Enter Your Name'
                                  value={this.state.name}
                                  onChange={this.onChangeName}
+                                 onClick={()=>{this.focusMe('name')}}
+                                 onBlur={()=>{this.defocusMe('name')}}
                                  required
                                />
                              </div>
-                             <div className='form-group'>
+                             <div className='input-field gender'>
+                             <span><FaMercury/></span>
                                <select
                                  required
-                                 className='form-control'
+                                 className='input'
                                  value={this.state.gender}
                                  onChange={this.onChangeGender}
+                                 onClick={()=>{this.focusMe('gender')}}
+                                 onBlur={()=>{this.defocusMe('gender')}}
                                >
                                  <option
                                    disabled={this.state.gender !== ''}
@@ -207,46 +227,62 @@ export default class JoinUs extends Component {
                                  <option value='Female'>Female</option>
                                </select>
                              </div>
-                             <div className='form-group md-form'>
+                             <div className='input-field roll'>
+                             <span><TiSortNumerically/></span>
                                <input
                                  type='text'
                                  maxLength='7'
                                  pattern='[0-9]{7}'
+                                 title  ='Enter the KIIT roll number'
                                  placeholder='College Roll Number'
-                                 className='form-control'
+                                 className='input'
                                  value={this.state.roll}
                                  onChange={this.onChangeRoll}
+                                 onClick={()=>{this.focusMe('roll')}}
+                                 onBlur={()=>{this.defocusMe('roll')}}
                                  required
                                />
                              </div>
-                             <div className='form-group md-form'>
+                             <div className='input-field email'>
+                             <span><FaAt/></span>
                                <input
                                  type='email'
                                  placeholder='E-Mail Address (Use KIIT Mail)'
-                                 className='form-control'
+                                 pattern='[0-9]{7}@kiit.ac.in'
+                                 title='Enter the KIIT email'
+                                 className='input'
                                  value={this.state.email}
                                  onChange={this.onChangeEmail}
+                                 onClick={()=>{this.focusMe('email')}}
+                                 onBlur={()=>{this.defocusMe('email')}}
+                                
                                  required
                                />
                              </div>
-                             <div className='form-group md-form'>
+                             <div className='input-field wapp'>
+                             <span><FaWhatsapp/></span>
                                <input
                                  type='text'
                                  maxLength='10'
                                  pattern='[0-9]{10}'
-                                 className='form-control'
+                                 className='input'
                                  placeholder='Whatsapp No.'
                                  value={this.state.contact}
                                  onChange={this.onChangeContact}
+                                 onClick={()=>{this.focusMe('wapp')}}
+                                 onBlur={()=>{this.defocusMe('wapp')}}
                                  required
                                />
                              </div>
-                             <div className='form-group'>
+                             <div className='input-field branch'>
+                             <span><FaCodeBranch/></span>
                                <select
                                  required
-                                 className='form-control'
+                                 className='input'
                                  value={this.state.branch}
                                  onChange={this.onChangeBranch}
+                                 onClick={()=>{this.focusMe('branch')}}
+                                 onBlur={()=>{this.defocusMe('branch')}}
                                >
                                  <option
                                    disabled={this.state.branch !== ''}
@@ -266,13 +302,16 @@ export default class JoinUs extends Component {
                                  <option value='CSCE'>CSCE </option>
                                </select>
                              </div>
-                             <div className='form-group'>
+                             <div className='input-field year'>
+                             <span><FaBookOpen/></span>
                                <select
                                  required
-                                 className='form-control'
+                                 className='input'
                                  value={this.state.year}
                                  onChange={this.onChangeYear}
                                  placeholder='Year of College'
+                                 onClick={()=>{this.focusMe('year')}}
+                                 onBlur={()=>{this.defocusMe('year')}}
                                >
                                  <option
                                    disabled={this.state.year !== ''}
@@ -286,13 +325,16 @@ export default class JoinUs extends Component {
                                </select>
                              </div>
 
-                             <div className='form-group'>
+                             <div className='input-field course'>
+                             <span><ImBooks/></span>
                                <select
                                  required
-                                 className='form-control selectpicker'
+                                 className='input selectpicker'
                                  value={this.state.course}
                                  onChange={this.onChangeCourse}
                                  placeholder='The Course You Are Interested'
+                                 onClick={()=>{this.focusMe('course')}}
+                                 onBlur={()=>{this.defocusMe('course')}}
                                >
                                  <option
                                    disabled={this.state.course !== ''}
