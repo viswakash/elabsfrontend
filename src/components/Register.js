@@ -352,7 +352,7 @@ export default class JoinUs extends Component {
                                  <option value='IOT'>IOT</option>
                                  <option value='Networking'>Networking</option>
                                  <option value='Android Development'>
-                                   Android Development
+                                   Android Dev
                                  </option>
                                  <option value='Web Development'>
                                    Web Development{' '}
